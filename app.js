@@ -1,26 +1,31 @@
-const {MongoClient} = require('mongodb');
+const mongoose = require('mongoose');
+
 require('dotenv/config');
 
-MongoClient.connect(process.env.mongoURI, {
-    useNewUrlParser: true
-}, (err, client) => {
+const db_conn = mongoose.connect(process.env.mongoURI, {useNewUrlParser: true});
 
-    if (err) {
-        return console.error(err);
-    }
+db_conn.then(succ => console.log('Connected to database'), err => console.log(`
+    failed to connect to db: ${err.message}
+    ${JSON.stringify(err, null, 2)}
+`));
 
-    const db = client.db('todos-api-nodejs');
+require('./models/todo');
+const todos = mongoose.model('todo');
 
-    db
-        .collection('Todos')
-        .insertOne({
-            text: 'eat eat',
-            finished: false
-        }, (err, result) => {
-            if (err) {
-                return console.log('Unable to insert todo ', err);
-            }
+const newTodo = new todos({text: 'Eat it', finished: false});
 
-            console.log(JSON.stringify(result.ops, null, 10));
-        });
-});
+todos
+    .collection
+    .drop();
+
+newTodo
+    .save()
+    .then(succ => {
+        todos
+            .find()
+            .then(succ => console.log(succ));
+    });
+
+todos
+    .find()
+    .then(succ => console.log(succ));

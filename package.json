@@ -1,0 +1,27 @@
+{
+  "name": "api-todo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "dependencies": {
+    "dotenv": "^6.0.0",
+    "mongodb": "^3.1.1",
+    "mongoose": "^5.2.5"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.3"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DamianFurmanczyk/node-todo-api.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DamianFurmanczyk/node-todo-api/issues"
+  },
+  "homepage": "https://github.com/DamianFurmanczyk/node-todo-api#readme"
+}
