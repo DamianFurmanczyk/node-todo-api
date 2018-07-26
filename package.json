@@ -5,14 +5,20 @@
   "main": "app.js",
   "dependencies": {
     "body-parser": "^1.18.3",
+    "crypto-js": "^3.1.9-1",
     "dotenv": "^6.0.0",
     "express": "^4.16.3",
+    "jsonwebtoken": "^8.3.0",
     "mongodb": "^3.1.1",
     "mongoose": "^5.2.5",
-    "pug": "^2.0.3"
+    "pug": "^2.0.3",
+    "validator": "^10.4.0"
   },
   "devDependencies": {
-    "nodemon": "^1.18.3"
+    "expect": "^23.4.0",
+    "mocha": "^5.2.0",
+    "nodemon": "^1.18.3",
+    "supertest": "^3.1.0"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
