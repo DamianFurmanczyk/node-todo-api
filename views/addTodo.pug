@@ -1,0 +1,6 @@
+extends layout
+
+block content
+    form(action='/todos', method='POST')
+        input(name='text', type='text')
+        button(type='submit') submit
