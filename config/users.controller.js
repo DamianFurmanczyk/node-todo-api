@@ -21,6 +21,36 @@ exports.signUp = (req, res) => {
         .catch(err => res.status(400).json(err));
 };
 
+// get
+
+exports.userInfoPage = (req, res) => {
+    console.log(req.header('x-auth'));
+    User
+        .findByAuthToken(req.header('x-auth'))
+        .then(user => {
+            if (!user) {
+                console.log('!user');
+                return new Promise((resolve, reject) => {
+                    reject({msg: 'User not found'});
+                });
+            }
+
+            let response = {};
+            response.msg = 'Authorization succesfull';
+            response.user = user;
+
+            return res
+                .status(202)
+                .send(response);
+        })
+        .catch(err => {
+            res
+                .status(401)
+                .json(err);
+        });
+    // 401 - Unauthorized
+};
+
 exports.signUpPage = (req, res) => {
     res.render('signUp');
-}
+};
